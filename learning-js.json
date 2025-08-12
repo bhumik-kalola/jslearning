@@ -1,0 +1,580 @@
+[
+  {
+    day: 1,
+    topic: "Variables & Data Types",
+    summary: "let / const / var; primitives: Number, String, Boolean, null, undefined, Symbol, BigInt.",
+    code: `let x = 10;
+const name = "Bhumik";
+var oldStyle = true;
+console.log(typeof x, typeof name, typeof oldStyle);`,
+    exercises: [
+      "Declare three variables using var, let, const and log types.",
+      "Try reassigning a const and observe the error.",
+      "What is typeof null? Check in console."
+    ],
+    questions: [
+      "Difference between var, let, const?",
+      "List JS primitive types.",
+      "Why prefer let/const over var?"
+    ]
+  },
+  {
+    day: 2,
+    topic: "Control Flow & Loops",
+    summary: "if/else, switch, for, while, do...while, for...of, for...in.",
+    code: `for (let i = 0; i < 3; i++) { console.log(i); }
+const arr = [1,2,3];
+for (const v of arr) console.log(v);`,
+    exercises: [
+      "Write a for loop printing even numbers 0..10.",
+      "Use for...of to sum [4,5,6].",
+      "Explain difference between for...in and for...of."
+    ],
+    questions: [
+      "When to use switch vs if/else?",
+      "Difference between for..in and for..of?",
+      "How to break out of nested loops?"
+    ]
+  },
+  {
+    day: 3,
+    topic: "Functions & Scope",
+    summary: "Function declarations, expressions, arrow functions, lexical scope, hoisting basics.",
+    code: `function add(a,b){ return a + b; }
+const sum = (a,b) => a + b;
+console.log(add(2,3), sum(4,5));`,
+    exercises: [
+      "Write a function that returns square of a number.",
+      "Convert the function declaration to an arrow function.",
+      "Show an example demonstrating hoisting."
+    ],
+    questions: [
+      "What is hoisting?",
+      "How are arrow functions different in handling 'this'?",
+      "When to use function expression vs declaration?"
+    ]
+  },
+  {
+    day: 4,
+    topic: "Closures & Higher-order Functions",
+    summary: "Closures capture the environment; functions that take/return functions.",
+    code: `function makeAdder(x){
+  return function(y){ return x + y; };
+}
+const add5 = makeAdder(5);
+console.log(add5(3)); // 8`,
+    exercises: [
+      "Implement makeMultiplier(n).",
+      "Create a private counter with increment() and decrement().",
+      "Write a memoize(fn) using closures."
+    ],
+    questions: [
+      "What is a closure and where is it useful?",
+      "How do closures affect memory?",
+      "Give a real-world use case for closures."
+    ]
+  },
+  {
+    day: 5,
+    topic: "Arrays & Array Methods",
+    summary: "push/pop, shift/unshift, map, filter, reduce, find, some, every.",
+    code: `const a = [1,2,3];
+console.log(a.map(x => x*2));
+console.log(a.reduce((s,v)=>s+v,0));`,
+    exercises: [
+      "Use map to double array elements.",
+      "Use reduce to sum an array.",
+      "Implement flatten for one level of nesting."
+    ],
+    questions: [
+      "When use map vs forEach?",
+      "Explain reduce with example.",
+      "Complexity of indexOf on an array?"
+    ]
+  },
+  {
+    day: 6,
+    topic: "Objects & Prototypes",
+    summary: "Object literals, property access, prototypal inheritance, Object.create.",
+    code: `const obj = {name: "A", age: 25};
+console.log(obj.name);
+const proto = {greet(){ return 'hi'; }};
+const o = Object.create(proto);
+console.log(o.greet());`,
+    exercises: [
+      "Create an object and iterate keys/values.",
+      "Clone an object shallowly and deeply (explain difference).",
+      "Use Object.create to inherit a method."
+    ],
+    questions: [
+      "Prototype vs class in JS?",
+      "How does hasOwnProperty work?",
+      "How to add non-enumerable property?"
+    ]
+  },
+  {
+    day: 7,
+    topic: "ES6+ Essentials",
+    summary: "Destructuring, template literals, default params, rest/spread, arrow, modules (intro).",
+    code: `const [a,b] = [1,2];
+const obj = {x:1,y:2};
+const {x,y} = obj;
+console.log(\`x=\${x}, y=\${y}\`);`,
+    exercises: [
+      "Destructure an object and swap variables.",
+      "Use spread to merge arrays.",
+      "Write a function with default params."
+    ],
+    questions: [
+      "How does spread vs rest differ?",
+      "When to use destructuring?",
+      "Why arrow functions sometimes undesirable?"
+    ]
+  },
+
+  /* Week 2 */
+  {
+    day: 8,
+    topic: "Strings & RegExp",
+    summary: "String methods, template strings, RegExp basics, match/replace/test.",
+    code: `const s = "hello world";
+console.log(s.includes("world"));
+const emailRx = /\\S+@\\S+\\.\\S+/;
+console.log(emailRx.test("a@b.com"));`,
+    exercises: [
+      "Reverse words in a sentence.",
+      "Validate an email with regex.",
+      "Extract numbers from a string."
+    ],
+    questions: [
+      "Difference between test() and match()?",
+      "When to avoid regex?",
+      "How to create a global regex?"
+    ]
+  },
+  {
+    day: 9,
+    topic: "Numbers, Math & Date",
+    summary: "Number quirks, parseInt/parseFloat, Math functions, Date basics and formatting.",
+    code: `console.log(0.1 + 0.2); // floating point
+console.log(Math.max(3,7,1));
+const d = new Date();
+console.log(d.toISOString());`,
+    exercises: [
+      "Format a Date as YYYY-MM-DD.",
+      "Compare two dates.",
+      "Show floating point precision issue and fix with rounding."
+    ],
+    questions: [
+      "Why 0.1 + 0.2 !== 0.3?",
+      "Difference between Date.now() and new Date()?",
+      "What is BigInt and when to use it?"
+    ]
+  },
+  {
+    day: 10,
+    topic: "Map, Set & WeakMap/WeakSet",
+    summary: "Map and Set for keyed collections; WeakMap/WeakSet for GC-friendly references.",
+    code: `const m = new Map();
+m.set('a',1);
+const s = new Set([1,2,2]);
+console.log(s.has(2));`,
+    exercises: [
+      "Count unique values in array using Set.",
+      "Use Map to count frequency.",
+      "Explain when to use WeakMap."
+    ],
+    questions: [
+      "Map vs Object for keys?",
+      "Complexity for Map get/set?",
+      "When use WeakSet?"
+    ]
+  },
+  {
+    day: 11,
+    topic: "Error Handling & Debugging",
+    summary: "try/catch/finally, custom errors, console, debugger statements.",
+    code: `try {
+  throw new Error("bad");
+} catch (e) {
+  console.error(e.message);
+} finally {
+  console.log('cleanup');
+}`,
+    exercises: [
+      "Throw and catch a custom Error with name.",
+      "Demonstrate try/catch with async (Promise) example.",
+      "Use debugger to step through a piece of code."
+    ],
+    questions: [
+      "How to handle errors in async/await?",
+      "When to rethrow an error?",
+      "What info does a stack trace give?"
+    ]
+  },
+  {
+    day: 12,
+    topic: "Promises Deep Dive",
+    summary: "Creating Promises, chaining, Promise.all, Promise.race, error flow.",
+    code: `const p = new Promise((res, rej) => setTimeout(()=>res(5),100));
+p.then(v => console.log(v));`,
+    exercises: [
+      "Wrap setTimeout in a Promise (delay).",
+      "Use Promise.all to fetch two URLs (mock).",
+      "Show how rejection propagates in chain."
+    ],
+    questions: [
+      "Difference between Promise.all and Promise.race?",
+      "How to handle multiple independent promises?",
+      "What is unhandled rejection?"
+    ]
+  },
+  {
+    day: 13,
+    topic: "Async/Await",
+    summary: "Syntactic sugar for Promises; sequential vs parallel with await.",
+    code: `async function f(){
+  const a = await Promise.resolve(1);
+  const b = await Promise.resolve(2);
+  return a + b;
+}
+f().then(console.log);`,
+    exercises: [
+      "Convert a .then chain to async/await.",
+      "Run two async ops in parallel and await both.",
+      "Add proper try/catch for awaited operations."
+    ],
+    questions: [
+      "Why avoid using await inside a forEach?",
+      "How to timeout an awaited promise?",
+      "Error handling differences vs .then"
+    ]
+  },
+  {
+    day: 14,
+    topic: "Event Loop & Concurrency",
+    summary: "Call stack, task queue, microtasks (Promises), timers; order of execution.",
+    code: `console.log('start');
+setTimeout(()=>console.log('timeout'),0);
+Promise.resolve().then(()=>console.log('promise'));
+console.log('end'); // order: start, end, promise, timeout`,
+    exercises: [
+      "Predict console order for various setTimeout/Promise combos.",
+      "Implement a non-blocking CPU-heavy task chunked with setTimeout.",
+      "Explain microtask vs macrotask."
+    ],
+    questions: [
+      "What runs first: Promise.then or setTimeout?",
+      "What is process.nextTick (Node)?",
+      "How to avoid blocking the event loop?"
+    ]
+  },
+
+  /* Week 3 */
+  {
+    day: 15,
+    topic: "'this' & Function Binding",
+    summary: "How 'this' is determined: call-time, default, arrow functions, bind/call/apply.",
+    code: `const obj = { x: 1, getX(){ return this.x; } };
+const f = obj.getX;
+console.log(obj.getX(), f.call(obj));`,
+    exercises: [
+      "Use bind to fix 'this' for a callback.",
+      "Show arrow function capturing outer 'this'.",
+      "Explain 'this' in constructor functions."
+    ],
+    questions: [
+      "How does bind differ from call/apply?",
+      "Why do arrow functions not have their own 'this'?",
+      "How does 'this' behave in event handlers?"
+    ]
+  },
+  {
+    day: 16,
+    topic: "Prototypes & Inheritance",
+    summary: "Prototype chain, Object.create, function constructors, prototype methods.",
+    code: `function Person(name){ this.name = name; }
+Person.prototype.greet = function(){ return 'hi ' + this.name; };
+const p = new Person('A'); console.log(p.greet());`,
+    exercises: [
+      "Implement prototypal inheritance between two constructors.",
+      "Inspect __proto__ chain in console.",
+      "Add a method to a prototype and observe instances."
+    ],
+    questions: [
+      "How does prototype differ from class?",
+      "How are methods shared across instances?",
+      "What is prototype pollution risk?"
+    ]
+  },
+  {
+    day: 17,
+    topic: "Classes & OOP Patterns",
+    summary: "ES6 class syntax, extends, super, static, getters/setters.",
+    code: `class Animal {
+  constructor(name){ this.name = name; }
+  speak(){ return this.name + ' speaks'; }
+}
+class Dog extends Animal { speak(){ return this.name + ' barks'; } }
+console.log(new Dog('Rex').speak());`,
+    exercises: [
+      "Create a base class and extend it.",
+      "Use getter/setter for computed property.",
+      "Implement a simple mixin pattern."
+    ],
+    questions: [
+      "Are JS classes syntactic sugar?",
+      "When use prototype methods vs class methods?",
+      "What are static methods for?"
+    ]
+  },
+  {
+    day: 18,
+    topic: "Modules & Packaging",
+    summary: "ES Modules (import/export) vs CommonJS (require/module.exports); package.json basics.",
+    code: `// utils.js
+export function add(a,b){ return a+b; }
+// main.js
+import { add } from './utils.js';`,
+    exercises: [
+      "Create and import a small module.",
+      "Explain default vs named exports.",
+      "Create an npm script for 'start'."
+    ],
+    questions: [
+      "When use CommonJS vs ESM in Node?",
+      "How bundlers treat modules?",
+      "What is tree-shaking?"
+    ]
+  },
+  {
+    day: 19,
+    topic: "Memory & Performance",
+    summary: "Detecting leaks, profiling, avoiding excessive allocations, algorithmic efficiency.",
+    code: `const arr = [];
+for(let i=0;i<1000;i++){ arr.push(new Array(1000).fill(i)); } // watch memory`,
+    exercises: [
+      "Find a memory leak in a closure example.",
+      "Measure function time using console.time/console.timeEnd.",
+      "Optimize a function to reduce allocations."
+    ],
+    questions: [
+      "Common causes of memory leaks in JS?",
+      "How to profile memory in Chrome DevTools?",
+      "When to optimize: premature vs necessary?"
+    ]
+  },
+  {
+    day: 20,
+    topic: "Functional Programming",
+    summary: "Immutability, pure functions, map/filter/reduce, composition, currying.",
+    code: `const map = (fn, arr) => arr.map(fn);
+const add1 = x => x + 1;
+console.log(map(add1, [1,2,3]));`,
+    exercises: [
+      "Implement compose(f,g) => x => f(g(x)).",
+      "Write a pure function that transforms data.",
+      "Use reduce to implement map."
+    ],
+    questions: [
+      "Benefits of pure functions?",
+      "What is currying?",
+      "When functional style reduces bugs?"
+    ]
+  },
+
+  /* Week 4 */
+  {
+    day: 21,
+    topic: "Testing & Tooling",
+    summary: "Unit testing basics (Jest/Mocha), assertions, test structure, running tests via npm.",
+    code: `// example.test.js (Jest)
+test('adds', () => { expect(1+2).toBe(3); });`,
+    exercises: [
+      "Write tests for a small util function.",
+      "Run tests with npm script.",
+      "Mock an external call in a test."
+    ],
+    questions: [
+      "Why write unit tests?",
+      "Difference between unit and integration tests?",
+      "What is test coverage?"
+    ]
+  },
+  {
+    day: 22,
+    topic: "DOM Essentials",
+    summary: "Selecting elements, events, event delegation, modifying DOM safely.",
+    code: `const btn = document.querySelector('#btn');
+btn.addEventListener('click', ()=> alert('clicked'));`,
+    exercises: [
+      "Create and append a DOM element dynamically.",
+      "Implement event delegation for a list.",
+      "Toggle a CSS class on click."
+    ],
+    questions: [
+      "What is event delegation and why use it?",
+      "Difference between innerHTML and textContent?",
+      "How to avoid layout thrashing?"
+    ]
+  },
+  {
+    day: 23,
+    topic: "Fetch & AJAX",
+    summary: "fetch API, handling JSON, errors, AbortController for cancellation.",
+    code: `async function getJson(url){
+  const res = await fetch(url);
+  if(!res.ok) throw new Error(res.status);
+  return res.json();
+}`,
+    exercises: [
+      "Fetch sample JSON and render on the page.",
+      "Handle fetch errors gracefully.",
+      "Cancel a fetch using AbortController."
+    ],
+    questions: [
+      "How to handle network errors?",
+      "When to use axios vs fetch?",
+      "How to implement retries?"
+    ]
+  },
+  {
+    day: 24,
+    topic: "Forms & LocalStorage",
+    summary: "Form handling, basic validation, localStorage/sessionStorage usage.",
+    code: `const data = {name: 'A'};
+localStorage.setItem('user', JSON.stringify(data));
+console.log(JSON.parse(localStorage.getItem('user')));`,
+    exercises: [
+      "Save form inputs to localStorage on submit.",
+      "Validate email client-side before sending.",
+      "Auto-fill form values from saved data."
+    ],
+    questions: [
+      "Pros/cons of localStorage?",
+      "How to persist sensitive data?",
+      "When use sessionStorage vs localStorage?"
+    ]
+  },
+  {
+    day: 25,
+    topic: "Browser APIs & Utilities",
+    summary: "History API, URLSearchParams, Geolocation, Performance APIs, basics of service workers.",
+    code: `const params = new URLSearchParams(window.location.search);
+console.log(params.get('q'));`,
+    exercises: [
+      "Parse query params and display them.",
+      "Use history.pushState to change URL without reload.",
+      "Use Performance.now() to measure a task."
+    ],
+    questions: [
+      "What is the History API used for?",
+      "How does Service Worker improve performance?",
+      "Security considerations for browser APIs?"
+    ]
+  },
+  {
+    day: 26,
+    topic: "Build Tools & Bundlers",
+    summary: "npm scripts, bundlers (webpack/rollup), Babel, transpilation vs polyfills.",
+    code: `// package.json scripts
+// "scripts": { "build": "webpack --mode production" }`,
+    exercises: [
+      "Create an npm script to start a dev server.",
+      "Bundle a tiny app with a simple config.",
+      "Add Babel to transpile ES6."
+    ],
+    questions: [
+      "Why use a bundler?",
+      "What is tree-shaking?",
+      "When polyfill is needed?"
+    ]
+  },
+  {
+    day: 27,
+    topic: "Node.js Basics",
+    summary: "Node runtime, require/import, fs, http server, npm ecosystem.",
+    code: `const http = require('http');
+const server = http.createServer((req,res)=> res.end('hello'));
+server.listen(3000);`,
+    exercises: [
+      "Create a simple HTTP server that returns JSON.",
+      "Read and return a file using fs.",
+      "Write a script that logs CLI args."
+    ],
+    questions: [
+      "Difference between Node and browser JS?",
+      "What is event loop in Node?",
+      "When use streams vs buffers?"
+    ]
+  },
+  {
+    day: 28,
+    topic: "Data Structures — Basics",
+    summary: "Big-O notation, arrays, linked lists, stacks, queues; why choice matters.",
+    code: `// simple stack
+class Stack {
+  constructor(){ this._ = []; }
+  push(v){ this._.push(v); }
+  pop(){ return this._.pop(); }
+}`,
+    exercises: [
+      "Implement stack and queue classes.",
+      "Reverse a linked list (iterative).",
+      "Explain time complexity for push/pop operations."
+    ],
+    questions: [
+      "When use linked list over array?",
+      "Explain amortized O(1) for push on JS arrays?",
+      "What is Big-O of accessing an element in array?"
+    ]
+  },
+  {
+    day: 29,
+    topic: "Sorting & Searching",
+    summary: "Common sorts (bubble, quick, merge), binary search, complexity trade-offs.",
+    code: `function binarySearch(arr, x){
+  let l=0, r=arr.length-1;
+  while(l<=r){
+    const m = Math.floor((l+r)/2);
+    if(arr[m]===x) return m;
+    if(arr[m] < x) l = m+1; else r = m-1;
+  }
+  return -1;
+}`,
+    exercises: [
+      "Implement quicksort (in-place or not).",
+      "Implement binary search and test it.",
+      "Compare O(n log n) sort vs O(n^2) on large arrays."
+    ],
+    questions: [
+      "When to use quicksort vs merge sort?",
+      "Why binary search requires sorted array?",
+      "Stability of sorting algorithms?"
+    ]
+  },
+  {
+    day: 30,
+    topic: "Problem Solving & Interview Prep",
+    summary: "Combine learned techniques; patterns (two-pointers, sliding window, hash maps), mock problems.",
+    code: `// Two-sum example
+function twoSum(nums, target){
+  const map = new Map();
+  for(let i=0;i<nums.length;i++){
+    const need = target - nums[i];
+    if(map.has(need)) return [map.get(need), i];
+    map.set(nums[i], i);
+  }
+}`,
+    exercises: [
+      "Solve Two-Sum (map) and Longest Substring Without Repeating Characters (sliding window).",
+      "Time yourself for 30 mins on a LeetCode problem.",
+      "Explain your approach aloud (mock interview)."
+    ],
+    questions: [
+      "Walk through two-sum and its complexity.",
+      "How to optimize naive solutions?",
+      "How to present a solution in an interview?"
+    ]
+  }
+];
